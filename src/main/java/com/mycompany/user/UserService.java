@@ -22,19 +22,19 @@ public class UserService {
         repo.save(user);
     }
 
-    public User get(Integer id) throws UserNotFoundException {
+    public User get(Integer id) throws Exception {
         Optional<User> result = repo.findById(id);
         if (result.isPresent()) {
             return result.get();
 
         }
-        throw new UserNotFoundException("Could not find any users with Id" + id);
+        throw new Exception("Could not find any users with Id" + id);
     }
 
-    public void delete(Integer id) throws UserNotFoundException {
+    public void delete(Integer id) throws Exception {
         Long count = repo.countById(id);
         if (count == null || count == 0) {
-            throw new UserNotFoundException("Could not find any users with Id" + id);
+            throw new Exception("Could not find any users with Id" + id);
         }
         repo.deleteById(id);
     }

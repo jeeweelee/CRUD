@@ -43,7 +43,7 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("pageTitle", "Edit User (ID:" + id + ")");
             return "user_form";
-        } catch (UserNotFoundException e) {
+        } catch (Exception e) {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/users";
         }
@@ -54,7 +54,7 @@ public class UserController {
         try {
             service.delete(id);
             ra.addFlashAttribute("message", "The user Id " + id + " has been deleted.");
-        } catch (UserNotFoundException e) {
+        } catch (Exception e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/users";
