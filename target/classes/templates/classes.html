@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Classes</title>
+    <link rel ="stylesheet" type = "text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center" >
+    <div><h2>Manage Classes</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/classes/new}">Add New Class</a>
+    </div>
+    <div th:if="${message}" class ="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Class Name</th>
+                <th>Class Location</th>
+                <th>Number of Students</th>
+                <th></th>
+
+            </thead>
+            <tbody>
+            <th:block th:each="class : ${listClasses}">
+                <td>[[${class.id}]]</td>
+                <td>[[${class.class_name}]]</td>
+                <td>[[${class.class_location}]]</td>
+                <td>[[${class.num_students}]]</td>
+                <td>
+                    <a class=" h4 mr-3" th:href="@{'/classes/edit/' + ${class.id}}">Edit</a>
+                    <a class = "h4" th:href="@{'/classes/delete/' + ${class.id}}">Delete</a>
+
+                </td>
+                </tr>
+            </th:block>
+            </tbody>
+            </table-class>
+    </div>
+</body>
+</html>
