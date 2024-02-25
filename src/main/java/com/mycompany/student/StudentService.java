@@ -18,8 +18,9 @@ public class StudentService {
         return (List<Student>) repo.findAll();
     }
 
-    public void save(Student student) {
+    public Object save(Student student) {
         repo.save(student);
+        return null;
     }
 
     public Student get(Integer id) throws Exception {
