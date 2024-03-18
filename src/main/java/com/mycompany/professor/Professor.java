@@ -1,4 +1,4 @@
-package com.mycompany.teacher;
+package com.mycompany.professor;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,8 +10,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "teachers")
-public class Teacher {
+@Table(name = "professors")
+public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
