@@ -1,9 +1,12 @@
 package com.mycompany.dao;
 
+import com.mycompany.classes.ClassRepository;
+import com.mycompany.classes.Classes;
 import com.mycompany.dean.Dean;
 import com.mycompany.dean.DeanRepository;
 import com.mycompany.department.Department;
 import com.mycompany.department.DepartmentRepository;
+import com.mycompany.professor.Professor;
 import com.mycompany.professor.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +22,8 @@ public class DataPreloader implements CommandLineRunner {
     @Autowired
     private DeanRepository deanRepository;
     @Autowired
+    private ClassRepository classRepository;
+    @Autowired
     private ProfessorRepository professorRepository;
     @Autowired
     private DepartmentRepository departmentRepository;
@@ -27,41 +32,36 @@ public class DataPreloader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        addDataToDepartmentTable(5);
-        addDataToDeanTable(5);
+        int numRecords = 5;
+
+        Department department = new Department();
+        Dean dean = new Dean();
+        Classes classes = new Classes();
+
+        addDataToDepartmentTable(department, numRecords);
+        addDataToDeanTable(dean, numRecords);
+        addDataToClassesTable(classes, numRecords);
 
 
-//
-//        Department department = new Department();
-//        department.setId(1);
-//        department.setDepartment_location("TEST_LOCATION");
-//        department.setDepartment_name("TEST_NAME");
-//
-//        Dean dean = new Dean(); // Set properties for department if needed
-//        dean.setId(1);
-//        dean.setEmail(emailStr);
-//        dean.setPassword(passwordStr);
-//        dean.setFirstName(firstNameStr);
-//        dean.setLastName(lastNameStr);
-//        dean.setEnabled(true);
-//
-//        Professor professor = new Professor();
-//        professor.setEmail(emailStr);
-//        professor.setPassword(passwordStr);
-//        professor.setFirstName(firstNameStr);
-//        professor.setLastName(lastNameStr);
-//        professor.setEnabled(true);
-//        professor.setDepartment(department); // Ensure this department is persisted or retrieved from DB
-//        professor.setDean(dean);
-//
-//        professorRepository.save(professor);
+        Professor professor = new Professor();
+        professor.setId(1);
+        professor.setEmail("example@pace.edu");
+        professor.setPassword(PASSWORD_STR);
+        professor.setFirstName(FIRST_NAME_STR);
+        professor.setLastName(LAST_NAME_STR);
+        professor.setEnabled(true);
+        professor.setDepartment(department);
+        professor.setDean(dean);
+        professor.setClasses(classes);
+
+        professorRepository.save(professor);
+
     }
 
-    private void addDataToDepartmentTable(int numOfRecordsToInsert) {
+    private void addDataToDepartmentTable(Department department, int numOfRecordsToInsert) {
 
 
         for (int i = 0; i < numOfRecordsToInsert; i++) {
-            Department department = new Department();
             department.setId(numOfRecordsToInsert);
             department.setDepartment_location("TEST_LOCATION");
             department.setDepartment_name("TEST_NAME");
@@ -72,14 +72,27 @@ public class DataPreloader implements CommandLineRunner {
     }
 
 
-    private void addDataToDeanTable(int numOfRecordsToInsert) {
+    private void addDataToClassesTable(Classes classes, int numOfRecordsToInsert) {
+
+        for (int i = 0; i < numOfRecordsToInsert; i++) {
+            classes.setId(i);
+            classes.setClass_name("CLASS_NAME");
+            classes.setClass_location("CLASS_LOCATION");
+            classes.setNum_students(50);
+            classRepository.save(classes);
+        }
+
+
+    }
+
+
+    private void addDataToDeanTable(Dean dean, int numOfRecordsToInsert) {
 
 
         for (int i = 0; i < numOfRecordsToInsert; i++) {
 
             String email = "example_" + i + "@pace.edu";
 
-            Dean dean = new Dean();
             dean.setId(i);
             dean.setEmail(email);
             dean.setPassword(PASSWORD_STR);
