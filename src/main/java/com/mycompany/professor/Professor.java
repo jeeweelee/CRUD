@@ -1,10 +1,14 @@
 package com.mycompany.professor;
 
+import com.mycompany.dean.Dean;
+import com.mycompany.department.Department;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -29,4 +33,17 @@ public class Professor {
     private String lastName;
 
     private boolean enabled;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "dean_id")
+    private Dean dean;
+
+//    @ManyToOne
+//    @JoinColumn(name = "class_id", nullable = false)
+//    private Classes classes;
+
 }
