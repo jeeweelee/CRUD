@@ -30,8 +30,13 @@ public class ProfessorController {
     }
 
     @PostMapping("/professors/save")
-    public String saveProfessor(Professor professor, RedirectAttributes ra) {
-        service.save(professor);
+    public String saveProfessor(Professor professor, RedirectAttributes ra) throws Exception {
+        try {
+            service.save(professor);
+        }
+        catch (Exception e){
+            throw new Exception("Exception" + e.getMessage());
+        }
         ra.addFlashAttribute("message", "The professor has been saved successfully.");
         return "redirect:/professors";
     }

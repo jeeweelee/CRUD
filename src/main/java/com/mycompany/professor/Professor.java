@@ -1,5 +1,6 @@
 package com.mycompany.professor;
 
+import com.mycompany.classes.Classes;
 import com.mycompany.dean.Dean;
 import com.mycompany.department.Department;
 import jakarta.persistence.Column;
@@ -20,7 +21,7 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String email;
 
     @Column(length = 15, nullable = false)
@@ -35,15 +36,15 @@ public class Professor {
     private boolean enabled;
 
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 
     @ManyToOne
-    @JoinColumn(name = "dean_id")
+    @JoinColumn(name = "dean_id", nullable = false)
     private Dean dean;
 
-//    @ManyToOne
-//    @JoinColumn(name = "class_id", nullable = false)
-//    private Classes classes;
+    @ManyToOne
+    @JoinColumn(name = "class_id", nullable = false)
+    private Classes classes;
 
 }
