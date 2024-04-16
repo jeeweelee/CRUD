@@ -22,7 +22,6 @@
                 <th>E-mail</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Enabled</th>
                 <th></th>
 
             </thead>
@@ -32,7 +31,6 @@
                 <td>[[${dean.email}]]</td>
                 <td>[[${dean.firstName}]]</td>
                 <td>[[${dean.lastName}]]</td>
-                <td>[[${dean.enabled}]]</td>
                 <td>
                     <a class=" h4 mr-3" th:href="@{'/deans/edit/' + ${dean.id}}">Edit</a>
                     <a class = "h4" th:href="@{'/deans/delete/' + ${dean.id}}">Delete</a>
