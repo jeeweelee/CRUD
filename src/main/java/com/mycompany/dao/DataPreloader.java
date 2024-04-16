@@ -49,7 +49,6 @@ public class DataPreloader implements CommandLineRunner {
         professor.setPassword(PASSWORD_STR);
         professor.setFirstName(FIRST_NAME_STR);
         professor.setLastName(LAST_NAME_STR);
-        professor.setEnabled(true);
         professor.setDepartment(department);
         professor.setDean(dean);
         professor.setClasses(classes);
@@ -98,7 +97,6 @@ public class DataPreloader implements CommandLineRunner {
             dean.setPassword(PASSWORD_STR);
             dean.setFirstName(FIRST_NAME_STR);
             dean.setLastName(LAST_NAME_STR);
-            dean.setEnabled(true);
             deanRepository.save(dean);
         }
 
