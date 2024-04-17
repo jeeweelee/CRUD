@@ -1,4 +1,4 @@
-package com.mycompany.classes;
+package com.mycompany.dean;
 
 import com.mycompany.professor.Professor;
 import jakarta.persistence.Column;
@@ -14,22 +14,24 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "classes")
-public class Classes {
+@Table(name = "deans")
+public class Dean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 100, nullable = false, name = "class_name")
-    private String class_name;
+    @Column(unique = true, length = 45)
+    private String email;
 
-    @Column(length = 100, nullable = false, name = "class_location")
-    private String class_location;
+    @Column(length = 15)
+    private String password;
 
-    @Column(length = 5, nullable = false, name = "num_students")
-    private Integer num_students;
+    @Column(length = 45, name = "first_name")
+    private String firstName;
 
-    @OneToMany(mappedBy = "classes")
+    @Column(length = 45, name = "last_name")
+    private String lastName;
+
+    @OneToMany(mappedBy = "dean")
     private Set<Professor> professors;
-
 }

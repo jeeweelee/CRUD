@@ -2,14 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Professors</title>
+    <title>Manage Deans</title>
     <link rel ="stylesheet" type = "text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container-fluid text-center" >
-    <div><h2>Manage Professors</h2></div>
+    <div><h2>Manage Deans</h2></div>
     <div class="m-2">
-        <a class="h3" th:href="@{/professors/new}"> Add New Professor</a>
+        <a class="h3" th:href="@{/deans/new}"> Add New Dean</a>
     </div>
     <div th:if="${message}" class ="alert alert-success text-center">
         [[${message}]]
@@ -26,14 +26,15 @@
 
             </thead>
             <tbody>
-            <th:block th:each="professor : ${listProfessors}">
-                <td>[[${professor.id}]]</td>
-                <td>[[${professor.email}]]</td>
-                <td>[[${professor.firstName}]]</td>
-                <td>[[${professor.lastName}]]</td>
+            <th:block th:each="dean : ${listDeans}">
+                <td>[[${dean.id}]]</td>
+                <td>[[${dean.email}]]</td>
+                <td>[[${dean.firstName}]]</td>
+                <td>[[${dean.lastName}]]</td>
                 <td>
-                    <a class=" h4 mr-3" th:href="@{'/professors/edit/' + ${professor.id}}">Edit</a>
-                    <a class = "h4" th:href="@{'/professors/delete/' + ${professor.id}}">Delete</a>
+                    <a class=" h4 mr-3" th:href="@{'/deans/edit/' + ${dean.id}}">Edit</a>
+                    <a class = "h4" th:href="@{'/deans/delete/' + ${dean.id}}">Delete</a>
+
                 </td>
                 </tr>
             </th:block>

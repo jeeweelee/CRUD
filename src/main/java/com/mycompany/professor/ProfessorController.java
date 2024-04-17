@@ -1,5 +1,7 @@
 package com.mycompany.professor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Controller
 public class ProfessorController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProfessorController.class);
+
     @Autowired
     private ProfessorService service;
 
@@ -30,8 +35,13 @@ public class ProfessorController {
     }
 
     @PostMapping("/professors/save")
-    public String saveProfessor(Professor professor, RedirectAttributes ra) {
-        service.save(professor);
+    public String saveProfessor(Professor professor, RedirectAttributes ra) throws Exception {
+        try {
+            service.save(professor);
+        } catch (Exception e) {
+            logger.error("Exception: " + e.getMessage());
+            throw new Exception(e.getMessage());
+        }
         ra.addFlashAttribute("message", "The professor has been saved successfully.");
         return "redirect:/professors";
     }
