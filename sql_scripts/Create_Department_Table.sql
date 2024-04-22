@@ -1,5 +1,6 @@
-CREATE TABLE DEPARTMENT (
-Department_Id SMALLINT NOT NULL AUTO_INCREMENT,
-Department_Name VARCHAR(45) NOT NULL,
-PRIMARY KEY (Department_Id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table departments (
+id integer not null auto_increment,
+department_location varchar(100) not null,
+department_name varchar(100) not null,
+primary key (id)
+) engine=InnoDB
