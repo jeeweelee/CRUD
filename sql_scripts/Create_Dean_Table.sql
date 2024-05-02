@@ -1,5 +1,8 @@
-CREATE TABLE DEAN (
-Dean_Id SMALLINT NOT NULL AUTO_INCREMENT,
-PRIMARY KEY (Dean_Id),
-CONSTRAINT fkDean_Id FOREIGN KEY (Dean_Id) REFERENCES Professor (Professor_Id) ON DELETE RESTRICT ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table deans (
+id integer not null auto_increment,
+email varchar(45),
+first_name varchar(45),
+last_name varchar(45),
+password varchar(15),
+primary key (id)
+) engine=InnoDB

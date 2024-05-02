@@ -1,6 +1,7 @@
-CREATE TABLE CLASSES (
-Class_Id SMALLINT NOT NULL AUTO_INCREMENT,
-Class_Name VARCHAR(45) NOT NULL,
-Class_Location VARCHAR(45) NOT NULL,
-PRIMARY KEY (Class_Id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table classes (
+id integer not null auto_increment,
+class_location varchar(100) not null,
+class_name varchar(100) not null,
+num_students integer not null,
+primary key (id)
+) engine=InnoDB
