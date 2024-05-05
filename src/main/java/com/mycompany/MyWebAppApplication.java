@@ -9,5 +9,9 @@ public class MyWebAppApplication {
     public static void main(String[] args) {
         SpringApplication.run(MyWebAppApplication.class, args);
     }
+<<<<<<< Updated upstream
 
 }
+=======
+}
+>>>>>>> Stashed changes

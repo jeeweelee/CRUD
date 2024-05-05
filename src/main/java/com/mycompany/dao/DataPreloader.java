@@ -8,6 +8,9 @@ import com.mycompany.department.Department;
 import com.mycompany.department.DepartmentRepository;
 import com.mycompany.professor.Professor;
 import com.mycompany.professor.ProfessorRepository;
+import com.mycompany.student.Student;
+import com.mycompany.student.StudentRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -25,6 +28,8 @@ public class DataPreloader implements CommandLineRunner {
     private ClassRepository classRepository;
     @Autowired
     private ProfessorRepository professorRepository;
+    @Autowired
+    private StudentRepository studentRepository;
     @Autowired
     private DepartmentRepository departmentRepository;
 
@@ -53,7 +58,20 @@ public class DataPreloader implements CommandLineRunner {
         professor.setDean(dean);
         professor.setClasses(classes);
 
+        Student student = new Student();
+        student.setId(1);
+        student.setEmail("vz@vz.com");
+        student.setPassword("123456");
+        student.setFirstName("Vic");
+        student.setLastName("Zap");
+        student.setMajor("CS");
+        student.setCredit(30);
+        student.SetClassification();
+        student.setClasses(classes);
+        
+
         professorRepository.save(professor);
+        studentRepository.save(student);
 
     }
 
