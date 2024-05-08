@@ -31,6 +31,8 @@ public class ClassController {
 
     @PostMapping("/classes/save")
     public String saveClasses(Classes classes, RedirectAttributes ra) {
+        classes.fixSubject();
+        classes.setDescription();
         service.save(classes);
         ra.addFlashAttribute("message", "The classes has been saved successfully.");
         return "redirect:/classes";
