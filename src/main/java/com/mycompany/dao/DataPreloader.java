@@ -77,7 +77,11 @@ public class DataPreloader implements CommandLineRunner {
             classes.setId(i);
             classes.setClass_name("CLASS_NAME");
             classes.setClass_location("CLASS_LOCATION");
-            classes.setNum_students(50);
+            classes.setNum_of_students(50);
+            classes.setSubject("CLASS_SUBJECT");
+            classes.setClass_description("No Information");
+            classes.setClass_duration(100);
+            classes.setClass_grade("A");
             classRepository.save(classes);
         }
 

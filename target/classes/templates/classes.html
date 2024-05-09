@@ -22,6 +22,10 @@
                 <th>Class Name</th>
                 <th>Class Location</th>
                 <th>Number of Students</th>
+                <th>Subject</th>
+                <th>Class Description</th>
+                <th>Class Duration</th>
+                <th>Class Grade </th>
                 <th></th>
 
             </thead>
@@ -30,7 +34,11 @@
                 <td>[[${class.id}]]</td>
                 <td>[[${class.class_name}]]</td>
                 <td>[[${class.class_location}]]</td>
-                <td>[[${class.num_students}]]</td>
+                <td>[[${class.num_of_students}]]</td>
+                <td>[[${class.subject}]]</td>
+                <td>[[${class.class_description}]]</td>
+                <td>[[${class.class_duration}]]</td>
+                <td>[[${class.class_grade}]]</td>
                 <td>
                     <a class=" h4 mr-3" th:href="@{'/classes/edit/' + ${class.id}}">Edit</a>
                     <a class = "h4" th:href="@{'/classes/delete/' + ${class.id}}">Delete</a>
